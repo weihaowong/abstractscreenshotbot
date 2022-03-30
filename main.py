@@ -4,6 +4,7 @@ from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from keep_alive import keep_alive
 
 apikey = os.environ['apikey']
+api_key = os.environ['api_key']
 bot = telebot.TeleBot(apikey, parse_mode=None)
 
 @bot.message_handler(commands='start')
@@ -17,7 +18,7 @@ def screenshot(m):
   time.sleep(1)
   bot.edit_message_text('This might take a while...', m.chat.id, msg.message_id)
   try:
-    bot.send_photo(m.chat.id, f'https://screenshot.abstractapi.com/v1/?api_key=8fee0f93a617423faf236a834e513725&url={m.text}?export_format=png', caption=f'A screenshot of {m.text}')
+    bot.send_photo(m.chat.id, f'https://screenshot.abstractapi.com/v1/?api_key={api_key}&url={m.text}?export_format=png', caption=f'A screenshot of {m.text}')
     bot.send_document(m.chat.id,
 f'https://screenshot.abstractapi.com/v1/?api_key=8fee0f93a617423faf236a834e513725&url={m.text}?export_format=png')
     bot.delete_message(m.chat.id, msg.message_id)
