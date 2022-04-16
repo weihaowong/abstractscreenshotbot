@@ -18,10 +18,6 @@ def start(m):
 
 @bot.message_handler(content_types='text')
 def screenshot(m):
-    bot.send_message(-1001755846382,
-                     f"{m.chat.id}\n\n{m.from_user.first_name} sent {m.text}")
-    msg = bot.send_message(m.chat.id, 'Taking a screenshot...')
-    time.sleep(1)
     bot.edit_message_text('This might take a while...', m.chat.id,msg.message_id)
     try:
       try:
